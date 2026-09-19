@@ -1,6 +1,6 @@
 return {
   {
-    "hrsh7th/cmp-nvim-lsp"
+    "hrsh7th/cmp-nvim-lsp",
   },
   {
     "L3MON4D3/LuaSnip",
@@ -11,8 +11,10 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    dependencies = { "onsails/lspkind.nvim" },
     config = function()
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
@@ -22,8 +24,22 @@ return {
           end,
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          -- Pmenu / PmenuSel son los colores propios del menú en tu tema,
+          -- distintos del fondo del editor
+          completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+          }),
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+          }),
+        },
+        -- Iconos en vez de la palabra "Property", "Function", etc.
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = 40,
+            ellipsis_char = "...",
+          }),
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),

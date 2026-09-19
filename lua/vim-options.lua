@@ -7,6 +7,8 @@ vim.g.background = "light"
 
 vim.opt.swapfile = false
 
+vim.opt.pumheight = 10
+
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
@@ -16,3 +18,4 @@ vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
 
+vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]])
