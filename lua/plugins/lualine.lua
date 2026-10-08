@@ -12,5 +12,5 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   init = function() vim.opt.showmode = false end,
-  opts = { options = { theme = "dracula", globalstatus = true } },
+  opts = { options = { theme = "auto", globalstatus = true } },
 }
