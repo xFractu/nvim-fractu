@@ -1,0 +1,9 @@
+;; extends
+(class_name) @dm_css_selector
+(id_name) @dm_css_selector
+(tag_name) @dm_css_selector
+(property_name) @dm_css_prop
+(plain_value) @dm_css_value
+(integer_value) @dm_css_num
+(float_value) @dm_css_num
+(unit) @dm_css_num
