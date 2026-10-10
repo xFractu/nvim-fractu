@@ -7,3 +7,4 @@
 (integer_value) @dm_css_num
 (float_value) @dm_css_num
 (unit) @dm_css_num
+(important) @dm_css_important

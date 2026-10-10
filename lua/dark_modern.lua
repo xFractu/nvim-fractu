@@ -92,6 +92,7 @@ function M.apply()
   set({ "punctuation.delimiter", "punctuation.special" }, TS, c.white)
   set({ "punctuation.delimiter", "punctuation.special" }, CSS, c.white)
   set({ "punctuation.delimiter" }, HTML, c.white)
+  set({ "keyword.conditional.ternary", "keyword.operator", "operator", "punctuation.special" }, HTML, c.white)
 
   -- NUEVO: colores para las consultas propias (carpeta queries/)
   vim.api.nvim_set_hl(0, "@dm_import",       { fg = c.ts_var })
@@ -101,6 +102,7 @@ function M.apply()
   vim.api.nvim_set_hl(0, "@dm_css_value",    { fg = c.css_value })
   vim.api.nvim_set_hl(0, "@dm_css_prop",     { fg = c.css_prop })
   vim.api.nvim_set_hl(0, "@dm_css_num",      { fg = c.css_num })
+  vim.api.nvim_set_hl(0, "@dm_css_important", { fg = c.ts_kw })
 
   -- llaves, corchetes y paréntesis por nivel
   vim.api.nvim_set_hl(0, "DMBracket1", { fg = c.br1 })

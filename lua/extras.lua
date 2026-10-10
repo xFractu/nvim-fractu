@@ -49,3 +49,16 @@ for _, mode in ipairs({ "n", "v", "i" }) do
   vim.keymap.set(mode, "<S-ScrollWheelDown>", "<Cmd>normal! 6zl<CR>", { desc = "Scroll a la derecha" })
   vim.keymap.set(mode, "<S-ScrollWheelUp>",   "<Cmd>normal! 6zh<CR>", { desc = "Scroll a la izquierda" })
 end
+
+-- Ctrl+F en modo normal: escribir la palabra a buscar en el archivo
+vim.opt.ignorecase = true   -- no distingue mayúsculas...
+vim.opt.smartcase = true    -- ...salvo que escribas alguna
+vim.keymap.set("n", "<C-f>", "/", { desc = "Buscar en el archivo" })
+
+-- Esc apaga el resaltado de la búsqueda
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Quitar resaltado" })
+
+-- alternativa: lista de coincidencias del archivo con Telescope
+vim.keymap.set("n", "<leader>/", function()
+  require("telescope.builtin").current_buffer_fuzzy_find()
+end, { desc = "Buscar en el archivo (lista)" })
