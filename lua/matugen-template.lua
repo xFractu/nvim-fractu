@@ -52,6 +52,7 @@ function M.setup()
     base0E = '#000000',
     base0F = '#0a0a0a',
   }
+  vim.api.nvim_set_hl(0, "Visual", { bg = mix(0.45) })
 end
 
 -- recarga en caliente cuando Noctalia manda SIGUSR1
