@@ -62,3 +62,16 @@ vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Quitar resaltado" 
 vim.keymap.set("n", "<leader>/", function()
   require("telescope.builtin").current_buffer_fuzzy_find()
 end, { desc = "Buscar en el archivo (lista)" })
+
+-- barra de pestañas sin fondo propio (se ve el de la terminal)
+local function tabline_transparente()
+  for _, g in ipairs({ "TabLineFill", "BufferLineFill" }) do
+    vim.api.nvim_set_hl(0, g, { bg = "NONE" })
+  end
+end
+vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+  callback = function()
+    vim.schedule(tabline_transparente)
+    vim.defer_fn(tabline_transparente, 100)
+  end,
+})
