@@ -75,3 +75,16 @@ vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
     vim.defer_fn(tabline_transparente, 100)
   end,
 })
+
+-- terminales de Neovim (toggleterm) con el mismo fondo transparente que el editor
+local function terminal_normal()
+  if vim.bo.buftype == "terminal" then
+    vim.wo.winhighlight = "Normal:Normal,NormalNC:Normal,SignColumn:Normal,EndOfBuffer:Normal"
+  end
+end
+vim.api.nvim_create_autocmd({ "TermOpen", "BufWinEnter", "WinEnter" }, {
+  callback = function()
+    vim.schedule(terminal_normal)
+    vim.defer_fn(terminal_normal, 50)
+  end,
+})
